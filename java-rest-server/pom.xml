@@ -18,7 +18,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<start-class>nl.ttstudios.swagger.server.Application</start-class>
+		<start-class>uk.co.cyberbliss.App</start-class>
 
 		<!-- Required for Spring rest docs -->
 		<snippetsDirectory>${project.build.directory}/generated-ascii-doc</snippetsDirectory>
