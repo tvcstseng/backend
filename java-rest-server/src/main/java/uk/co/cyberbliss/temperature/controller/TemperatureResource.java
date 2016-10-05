@@ -4,56 +4,56 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 
-import uk.co.cyberbliss.Book;
+import uk.co.cyberbliss.temperature.dto.TemperatureDto;
 
 public interface TemperatureResource {
     /**
-     * @api {get} /api/book/:isbn Get a book via its ISBN code
-     * @apiName getBookByIsbn
+     * @api {get} /api/temperature/:sensor_uid Get a temperature via its SensorUID code
+     * @apiName getTemperatureBySensorUid
      * @apiGroup Books
      *
-     * @apiParam {String} isbn The book's unique ISBN code
+     * @apiParam {String} sensor_uid The temperature's unique SensorUID code
      *
-     * @apiSampleRequest http://localhost:9080/api/book/111-1
+     * @apiSampleRequest http://localhost:9080/api/temperature/111-1
      *
-     * @apiSuccess {String} isbn Book's ISBN
-     * @apiSuccess {String} title Title of book
-     * @apiSuccess {String} author Book's author
+     * @apiSuccess {String} sensor_uid Temperature's SensorUID
+     * @apiSuccess {String} title Title of temperature
+     * @apiSuccess {String} device Temperature's device
      * @apiSuccessExample {json} Success-Response:
      *     HTTP/1.1 200 OK
     {
-    "isbn": "111-1",
+    "sensor_uid": "111-1",
     "title": "Java 8 Lamdas",
-    "author": "Richard Warburton",
+    "device": "Richard Warburton",
     "_links": {
         "self": {
-            "href": "http://localhost:9080/api/book/111-1"
+            "href": "http://localhost:9080/api/temperature/111-1"
         }
     }
     }
 
-        @ApiError 404 Book not found
+        @ApiError 404 Temperature not found
      *
      */
-    ResponseEntity<Book> getBookByIsbn(String isbn);
+    ResponseEntity<TemperatureDto> getTemperatureBySensorUid(String sensor_uid);
 
     /**
-     * @api {post} /api/book Add a book
+     * @api {post} /api/temperature Add a temperature
      * @apiName addBook
      * @apiGroup Books
      *
-     * @apiParam {String} isbn The book's unique ISBN code
-     * @apiParam {String} title The book's title
-     * @apiParam {String} author The book's author
+     * @apiParam {String} sensor_uid The temperature's unique SensorUID code
+     * @apiParam {String} title The temperature's title
+     * @apiParam {String} device The temperature's device
      *
      * @apiParamExample {json} Request-Example:
     {
-    "isbn": "111-31",
+    "sensor_uid": "111-31",
     "title": "Test",
-    "author": "Steve",
+    "device": "Steve",
     "_links": {
         "self": {
-            "href": "http://localhost:9080/api/book/111-31"
+            "href": "http://localhost:9080/api/temperature/111-31"
         },
         "Books": {
             "href": "http://localhost:9080/api/books"
@@ -63,7 +63,7 @@ public interface TemperatureResource {
         @apiSuccessExample {json} Success-Response:
       *     HTTP/1.1 201 CREATED
      */
-    ResponseEntity<Book> addBook(Book book);
+    ResponseEntity<TemperatureDto> addBook(TemperatureDto temperature);
 
     /**
      * @api {get} /api/books Get a list of all books
@@ -73,57 +73,57 @@ public interface TemperatureResource {
      *
      * @apiSampleRequest http://localhost:9080/api/books
      *
-     * @apiSuccess {String} isbn Book's ISBN
-     * @apiSuccess {String} title Title of book
-     * @apiSuccess {String} author Book's author
+     * @apiSuccess {String} sensor_uid Temperature's SensorUID
+     * @apiSuccess {String} title Title of temperature
+     * @apiSuccess {String} device Temperature's device
      * @apiSuccessExample {json} Success-Response:
      *     HTTP/1.1 200 OK
      *      [
     {
-    "isbn": "111-1",
+    "sensor_uid": "111-1",
     "title": "Java 8 Lamdas",
-    "author": "Richard Warburton",
+    "device": "Richard Warburton",
     "_links": {
         "self": {
-            "href": "http://localhost:9080/api/book/111-1"
+            "href": "http://localhost:9080/api/temperature/111-1"
         }
     }
     },
     {
-    "isbn": "111-3",
+    "sensor_uid": "111-3",
     "title": "Test",
-    "author": "Steve",
+    "device": "Steve",
     "_links": {
         "self": {
-            "href": "http://localhost:9080/api/book/111-3"
+            "href": "http://localhost:9080/api/temperature/111-3"
         }
     }
     }
             ]
      */
-    ResponseEntity<List<Book>> getAllBooks();
+    ResponseEntity<List<TemperatureDto>> getAllBooks();
 
     /**
-     * @api {put} /api/book/:isbn Update a book
+     * @api {put} /api/temperature/:sensor_uid Update a temperature
      * @apiName updateBook
      * @apiGroup Books
-     * @apiDescription Update a book using its ISBN code
-     * @apiParam {String} title The book's title
-     * @apiParam {String} author The book's author
+     * @apiDescription Update a temperature using its SensorUID code
+     * @apiParam {String} title The temperature's title
+     * @apiParam {String} device The temperature's device
      *
-     * @apiSuccess {String} isbn Book's ISBN
-     * @apiSuccess {String} title Title of book
-     * @apiSuccess {String} author Book's author
+     * @apiSuccess {String} sensor_uid Temperature's SensorUID
+     * @apiSuccess {String} title Title of temperature
+     * @apiSuccess {String} device Temperature's device
      *
      * @apiSuccessExample {json} Success-Response
      *      HTTP/1.1 200 OK
      *      {
-    "isbn": "111-31",
+    "sensor_uid": "111-31",
     "title": "Test",
-    "author": "Steve Austin",
+    "device": "Steve Austin",
     "_links": {
         "self": {
-            "href": "http://localhost:9080/api/book/111-31"
+            "href": "http://localhost:9080/api/temperature/111-31"
         },
         "Books": {
             "href": "http://localhost:9080/api/books"
@@ -131,22 +131,22 @@ public interface TemperatureResource {
     }
     }
      */
-    ResponseEntity<Book> updateBook(String isbn, Book book);
+    ResponseEntity<TemperatureDto> updateBook(String sensor_uid, TemperatureDto temperature);
 
     /**
-     * @api {delete} /api/book/:isbn Delete a book
+     * @api {delete} /api/temperature/:sensor_uid Delete a temperature
      * @apiName deleteBook
      * @apiGroup Books
-     * @apiDescription Delete a book using its ISBN
+     * @apiDescription Delete a temperature using its SensorUID
      *
-     * @apiParam {String} isbn The book's unique ISBN code
+     * @apiParam {String} sensor_uid The temperature's unique SensorUID code
      *
-     * @apiSampleRequest http://localhost:9080/api/book/111-1
+     * @apiSampleRequest http://localhost:9080/api/temperature/111-1
      *
      * @apiSuccessExample {json} Success-Response:
      *     HTTP/1.1 200 OK
      *
      */
-    ResponseEntity<Void> deleteBook(String isbn);
+    ResponseEntity<Void> deleteBook(String sensor_uid);
 
 }
