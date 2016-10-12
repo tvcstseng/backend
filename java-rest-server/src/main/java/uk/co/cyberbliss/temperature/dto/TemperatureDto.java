@@ -2,6 +2,8 @@ package uk.co.cyberbliss.temperature.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.hateoas.ResourceSupport;
 
@@ -12,19 +14,25 @@ public class TemperatureDto extends ResourceSupport implements Serializable {
     private static final long serialVersionUID = 2601665415524779298L;
 
     @NotBlank
+    private String uID;
+
+    @NotBlank
     private String sensorUID;
 
     @NotBlank
     private String deviceUID;
 
+    @NotNull
+    private double temperature;
+
     @NotBlank
-    private String temperatureCelsius;
+    private String temperatureUnit;
 
     @NotBlank
     private String temperatureCRC;
 
-    @NotBlank
-    private String isTemperatureOK;
+    @NotNull
+    private boolean isTemperatureOK;
 
     @NotBlank
     private String unixTimestamp;
@@ -32,13 +40,23 @@ public class TemperatureDto extends ResourceSupport implements Serializable {
     public TemperatureDto() {
     }
 
-    public TemperatureDto(String sensorUID, String deviceUID, String temperatureCelsius, String temperatureCRC, String isTemperatureOK, String unixTimestamp) {
+    public TemperatureDto(String uId, String sensorUID, String deviceUID, double temperature, String temperatureUnit, String temperatureCRC, boolean isTemperatureOK, String unixTimestamp) {
+        this.uID = uId;
         this.sensorUID = sensorUID;
         this.deviceUID = deviceUID;
-        this.temperatureCelsius = temperatureCelsius;
+        this.temperature = temperature;
+        this.temperatureUnit = temperatureUnit;
         this.temperatureCRC = temperatureCRC;
         this.isTemperatureOK = isTemperatureOK;
         this.unixTimestamp = unixTimestamp;
+    }
+
+    public String getuID() {
+        return uID;
+    }
+
+    public void setuID(String uID) {
+        this.uID = uID;
     }
 
     public String getSensorUID() {
@@ -57,12 +75,20 @@ public class TemperatureDto extends ResourceSupport implements Serializable {
         this.deviceUID = deviceUID;
     }
 
-    public String getTemperatureCelsius() {
-        return temperatureCelsius;
+    public double getTemperature() {
+        return temperature;
     }
 
-    public void setTemperatureCelsius(String temperatureCelsius) {
-        this.temperatureCelsius = temperatureCelsius;
+    public void setTemperature(double temperature) {
+        this.temperature = temperature;
+    }
+
+    public String getTemperatureUnit() {
+        return temperatureUnit;
+    }
+
+    public void setTemperatureUnit(String temperatureUnit) {
+        this.temperatureUnit = temperatureUnit;
     }
 
     public String getTemperatureCRC() {
@@ -73,11 +99,11 @@ public class TemperatureDto extends ResourceSupport implements Serializable {
         this.temperatureCRC = temperatureCRC;
     }
 
-    public String getIsTemperatureOK() {
+    public boolean isTemperatureOK() {
         return isTemperatureOK;
     }
 
-    public void setIsTemperatureOK(String isTemperatureOK) {
+    public void setTemperatureOK(boolean isTemperatureOK) {
         this.isTemperatureOK = isTemperatureOK;
     }
 
@@ -91,14 +117,13 @@ public class TemperatureDto extends ResourceSupport implements Serializable {
 
     @Override
     public String toString() {
-        return toJson();  
+        return toJson();
     }
-    
-    private String toJson(){
+
+    private String toJson() {
         Gson gson = new Gson();
-        String json = gson.toJson(this);
+        String json = gson.toJson( this );
         return json;
     }
-    
 
 }
