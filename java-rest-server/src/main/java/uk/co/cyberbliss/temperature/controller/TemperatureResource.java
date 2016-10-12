@@ -35,7 +35,7 @@ public interface TemperatureResource {
         @ApiError 404 Temperature not found
      *
      */
-    ResponseEntity<TemperatureDto> getTemperatureBySensorUid(String sensor_uid);
+    ResponseEntity<TemperatureDto> getTemperatureBySensorUid(String uid);
 
     /**
      * @api {post} /api/temperature Add a temperature
@@ -63,7 +63,7 @@ public interface TemperatureResource {
         @apiSuccessExample {json} Success-Response:
       *     HTTP/1.1 201 CREATED
      */
-    ResponseEntity<TemperatureDto> addBook(TemperatureDto temperature);
+    ResponseEntity<TemperatureDto> addTemperatureReading(TemperatureDto temperature);
 
     /**
      * @api {get} /api/books Get a list of all books
@@ -101,7 +101,7 @@ public interface TemperatureResource {
     }
             ]
      */
-    ResponseEntity<List<TemperatureDto>> getAllBooks();
+    ResponseEntity<List<TemperatureDto>> getAllTemperatureReadings();
 
     /**
      * @api {put} /api/temperature/:sensor_uid Update a temperature
@@ -131,7 +131,7 @@ public interface TemperatureResource {
     }
     }
      */
-    ResponseEntity<TemperatureDto> updateBook(String sensor_uid, TemperatureDto temperature);
+    ResponseEntity<TemperatureDto> updateTemperatureReading(String sensorUid, TemperatureDto temperatureReading);
 
     /**
      * @api {delete} /api/temperature/:sensor_uid Delete a temperature
@@ -147,6 +147,6 @@ public interface TemperatureResource {
      *     HTTP/1.1 200 OK
      *
      */
-    ResponseEntity<Void> deleteBook(String sensor_uid);
+    ResponseEntity<Void> deleteTemperatureReading(String sensor_uid);
 
 }
