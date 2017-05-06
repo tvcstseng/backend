@@ -13,7 +13,7 @@ Navigate to the directory into which you cloned the repo and execute this:
 `mvn spring-boot:run`
 
 Once started you can access the APIs on port 9080, e.g.
-`http://localhost:9080/api/books`
+`http://192.168.1.185:9080/api/temperature_readings`
 
 The port number can be changed by editing the port property in `src/main/resources/application.yml`
 
