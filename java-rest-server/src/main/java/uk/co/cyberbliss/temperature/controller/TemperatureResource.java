@@ -2,9 +2,8 @@ package uk.co.cyberbliss.temperature.controller;
 
 import java.util.List;
 
+import com.ttstudios.granny_watcher.backend.dto.TemperatureDto;
 import org.springframework.http.ResponseEntity;
-
-import uk.co.cyberbliss.temperature.dto.TemperatureDto;
 
 public interface TemperatureResource {
     /**
