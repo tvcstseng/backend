@@ -18,6 +18,8 @@
 
     <modules>
         <module>java-rest-server</module>
+        <module>java-dao</module>
+        <module>dto</module>
     </modules>
 
     <properties>

@@ -1,4 +1,4 @@
-package uk.co.cyberbliss.temperature.dto;
+package com.ttstudios.granny_watcher.backend.dto;
 
 import java.io.Serializable;
 

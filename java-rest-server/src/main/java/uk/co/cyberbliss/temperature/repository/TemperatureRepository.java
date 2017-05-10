@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.ttstudios.granny_watcher.backend.dto.TemperatureDto;
 import org.springframework.stereotype.Component;
-
-import uk.co.cyberbliss.temperature.dto.TemperatureDto;
 
 @Component
 public class TemperatureRepository {
