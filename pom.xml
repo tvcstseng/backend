@@ -13,12 +13,12 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>BACKEND - BASELINE</name>
+    <name>COM - TTSTUDIOS - PI - JAVA BACKEND - BASELINE</name>
     <url>http://maven.apache.org</url>
 
     <modules>
         <module>java-rest-server</module>
-        <module>java-dao</module>
+        <module>backend-dao</module>
         <module>dto</module>
     </modules>
 
@@ -28,6 +28,8 @@
         <!-- JAVA -->
         <maven.compiler.source.version>1.8</maven.compiler.source.version>
         <maven.compiler.target.version>1.8</maven.compiler.target.version>
+
+
 
         <!-- common -->
         <com.ttstudios.common.db.database-connectivity.version>0.0.1-SNAPSHOT</com.ttstudios.common.db.database-connectivity.version>
@@ -45,6 +47,19 @@
 
     <dependencyManagement>
         <dependencies>
+
+            <!-- Spring -->
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>1.5.3.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>nl.ttstudios.pi</groupId>
+                <artifactId>backend-dao</artifactId>
+            </dependency>
 
             <dependency>
                 <groupId>com.ttstudios.common.db</groupId>
