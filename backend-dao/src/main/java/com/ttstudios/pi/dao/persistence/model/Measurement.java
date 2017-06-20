@@ -1,19 +1,21 @@
-package nl.ttstudios.backend.dao.entities;
+package com.ttstudios.pi.dao.persistence.model;
 
-import com.ttstudios.common.db.database_connectivity.MongoEntity;
-import org.mongojack.MongoCollection;
+import com.querydsl.core.annotations.QueryEntity;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.hateoas.ResourceSupport;
 
-import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
-
-import static nl.ttstudios.backend.dao.MappingConstants.COLLECTION_MEASUREMENTS;
-import static nl.ttstudios.backend.dao.MappingConstants.DB;
 
 /**
  * Created by ttseng on 5/6/17.
  */
-@MongoCollection(name = "Measurements")
-public class MeasurementEntity implements MongoEntity {
+@QueryEntity
+@Document
+public class Measurement extends ResourceSupport implements Serializable {
+
+    private static final long serialVersionUID = -4747375990087269943L;
 
     @Id
     private String _id;
@@ -66,13 +68,4 @@ public class MeasurementEntity implements MongoEntity {
         this.unixTimestamp = unixTimestamp;
     }
 
-    @Override
-    public String getCollectionName() {
-        return COLLECTION_MEASUREMENTS;
-    }
-
-    @Override
-    public String getDatabaseName() {
-        return DB;
-    }
 }

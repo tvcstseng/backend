@@ -2,8 +2,6 @@ package com.ttstudios.pi.dao.persistence.model;
 
 import com.querydsl.core.annotations.QueryEntity;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.CompoundIndex;
-import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -18,7 +16,6 @@ import java.util.Date;
 
 @QueryEntity
 @Document
-@CompoundIndexes({ @CompoundIndex(name = "email_age", def = "{'email.uId' : 1, 'age': 1}") })
 public class User extends ResourceSupport implements Serializable {
 
     private static final long serialVersionUID = 6861961813147181734L;

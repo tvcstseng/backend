@@ -6,16 +6,14 @@
 
     <parent>
         <artifactId>backend</artifactId>
-        <groupId>nl.ttstudios</groupId>
+        <groupId>nl.ttstudios.pi.backend</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>nl.ttstudios.pi</groupId>
     <artifactId>backend-dao</artifactId>
     <packaging>jar</packaging>
 
     <name>COM - TTSTUDIOS - PI - JAVA BACKEND - DAO</name>
-    <url>http://www.ttstudios.eu</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -59,20 +57,24 @@
             <artifactId>querydsl-mongodb</artifactId>
             <version>${querydsl.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.querydsl</groupId>
             <artifactId>querydsl-apt</artifactId>
             <version>${querydsl.version}</version>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-commons</artifactId>
             <version>RELEASE</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.hateoas</groupId>
             <artifactId>spring-hateoas</artifactId>

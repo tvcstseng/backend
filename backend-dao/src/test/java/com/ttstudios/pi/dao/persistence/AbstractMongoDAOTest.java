@@ -1,8 +1,11 @@
 package com.ttstudios.pi.dao.persistence;
 
 import com.ttstudios.pi.dao.config.SimpleMongoConfig;
+import com.ttstudios.pi.dao.persistence.model.Measurement;
 import com.ttstudios.pi.dao.persistence.model.User;
+import com.ttstudios.pi.dao.persistence.service.MeasurementService;
 import com.ttstudios.pi.dao.persistence.service.UserService;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,12 +20,21 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 public class AbstractMongoDAOTest {
 
     @Autowired
-    UserService service;
+    UserService userService;
 
-    @org.junit.Test
+    @Autowired
+    MeasurementService measurementService;
+
+    @Test
     public void testUserCreation(){
         User user = TestData.createUser();
-        service.saveOrUpdate(user);
+        userService.saveOrUpdate(user);
+    }
+
+    @Test
+    public void testMeasurementCreation(){
+        Measurement measurement = TestData.createMeasurement();
+        measurementService.saveOrUpdate(measurement);
     }
 
 }

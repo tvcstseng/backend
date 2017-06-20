@@ -1,13 +1,11 @@
 package com.ttstudios.granny_watcher.backend.dto;
 
-import java.io.Serializable;
-
-import javax.validation.constraints.NotNull;
-
+import com.google.gson.Gson;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.hateoas.ResourceSupport;
 
-import com.google.gson.Gson;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 public class TemperatureDto extends ResourceSupport implements Serializable {
 

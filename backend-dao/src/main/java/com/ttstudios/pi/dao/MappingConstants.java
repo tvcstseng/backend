@@ -1,4 +1,4 @@
-package nl.ttstudios.backend.dao;
+package com.ttstudios.pi.dao;
 
 /**
  * Created by tsengtvcs on 28-4-2017.

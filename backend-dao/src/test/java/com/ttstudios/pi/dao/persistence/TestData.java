@@ -1,5 +1,6 @@
 package com.ttstudios.pi.dao.persistence;
 
+import com.ttstudios.pi.dao.persistence.model.Measurement;
 import com.ttstudios.pi.dao.persistence.model.User;
 
 import java.util.Date;
@@ -20,5 +21,16 @@ public class TestData {
         user.setLocation("Amsterdam");
         user.setWatcherTypeId(0);
         return user;
+    }
+
+    public static Measurement createMeasurement(){
+        Measurement measurement = new Measurement();
+
+        measurement.setMeasurement(1.2d);
+        measurement.setMeasurementUnit("c");
+        measurement.setuID("7777777");
+        measurement.setUnixTimestamp(new Date());
+
+        return measurement;
     }
 }

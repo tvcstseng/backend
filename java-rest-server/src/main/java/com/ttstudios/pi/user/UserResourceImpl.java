@@ -80,7 +80,7 @@ public class UserResourceImpl implements UserResource {
 
     @Override
     @RequestMapping( value = "/users/{sensorUid}", method = RequestMethod.PUT, consumes = APPLICATION_JSON_VALUE )
-    @ApiOperation( value = "Update a book" )
+    @ApiOperation( value = "Update a user" )
     public ResponseEntity<User> updateUser(@PathVariable String sensorUid, @RequestBody User user) {
         HttpStatus httpStatus;
         if ( service.findOne( sensorUid ) != null ) {

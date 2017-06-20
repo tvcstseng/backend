@@ -8,7 +8,7 @@
         <version>1.2.4.RELEASE</version>
     </parent>
 
-    <groupId>nl.ttstudios</groupId>
+    <groupId>nl.ttstudios.pi.backend</groupId>
     <artifactId>backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -17,9 +17,10 @@
     <url>http://maven.apache.org</url>
 
     <modules>
-        <module>java-rest-server</module>
         <module>backend-dao</module>
-        <module>dto</module>
+        <module>backend-dto</module>
+        <module>backend-transform</module>
+        <module>java-rest-server</module>
     </modules>
 
     <properties>
@@ -28,8 +29,6 @@
         <!-- JAVA -->
         <maven.compiler.source.version>1.8</maven.compiler.source.version>
         <maven.compiler.target.version>1.8</maven.compiler.target.version>
-
-
 
         <!-- common -->
         <com.ttstudios.common.db.database-connectivity.version>0.0.1-SNAPSHOT</com.ttstudios.common.db.database-connectivity.version>
@@ -57,8 +56,21 @@
             </dependency>
 
             <dependency>
-                <groupId>nl.ttstudios.pi</groupId>
+                <groupId>nl.ttstudios.pi.backend</groupId>
                 <artifactId>backend-dao</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>nl.ttstudios.pi.backend</groupId>
+                <artifactId>backend-dto</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>nl.ttstudios.pi.backend</groupId>
+                <artifactId>backend-transform</artifactId>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>

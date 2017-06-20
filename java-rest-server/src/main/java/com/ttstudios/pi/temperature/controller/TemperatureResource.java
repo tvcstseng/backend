@@ -1,15 +1,11 @@
 package com.ttstudios.pi.temperature.controller;
 
-import java.util.List;
-
 import com.ttstudios.granny_watcher.backend.dto.TemperatureDto;
+import com.ttstudios.pi.dao.persistence.model.Measurement;
 import org.springframework.http.ResponseEntity;
 
-<<<<<<< 975bf8c130b5025d6810b6abc48a821e3aea3623:java-rest-server/src/main/java/uk/co/cyberbliss/temperature/controller/TemperatureResource.java
-=======
-import com.ttstudios.pi.temperature.dto.TemperatureDto;
+import java.util.List;
 
->>>>>>> 1525bfc4e253dd5155f51b3fcb8e5ed9966dc9ed:java-rest-server/src/main/java/com/ttstudios/pi/temperature/controller/TemperatureResource.java
 public interface TemperatureResource {
     /**
      * @api {get} /api/temperature/:sensor_uid Get a temperature via its SensorUID code
@@ -39,7 +35,7 @@ public interface TemperatureResource {
         @ApiError 404 Temperature not found
      *
      */
-    ResponseEntity<TemperatureDto> getTemperatureBySensorUid(String uid);
+    ResponseEntity<Measurement> getTemperatureBySensorUid(String uid);
 
     /**
      * @api {post} /api/temperature Add a temperature
@@ -67,7 +63,7 @@ public interface TemperatureResource {
         @apiSuccessExample {json} Success-Response:
       *     HTTP/1.1 201 CREATED
      */
-    ResponseEntity<TemperatureDto> addTemperatureReading(TemperatureDto temperature);
+    ResponseEntity<Measurement> addTemperatureReading(Measurement temperature);
 
     /**
      * @api {get} /api/books Get a list of all books
@@ -105,7 +101,7 @@ public interface TemperatureResource {
     }
             ]
      */
-    ResponseEntity<List<TemperatureDto>> getAllTemperatureReadings();
+    ResponseEntity<List<Measurement>> getAllTemperatureReadings();
 
     /**
      * @api {put} /api/temperature/:sensor_uid Update a temperature
@@ -135,7 +131,7 @@ public interface TemperatureResource {
     }
     }
      */
-    ResponseEntity<TemperatureDto> updateTemperatureReading(String sensorUid, TemperatureDto temperatureReading);
+    ResponseEntity<Measurement> updateTemperatureReading(String sensorUid, Measurement temperatureReading);
 
     /**
      * @api {delete} /api/temperature/:sensor_uid Delete a temperature
