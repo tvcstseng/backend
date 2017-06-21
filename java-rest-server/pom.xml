@@ -1,73 +1,57 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>nl.ttstudios</groupId>
-        <artifactId>backend</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
+	<parent>
+		<groupId>nl.ttstudios.pi.backend</groupId>
+		<artifactId>backend</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 
-    <artifactId>java-rest-server</artifactId>
-    <packaging>jar</packaging>
+	<artifactId>java-rest-server</artifactId>
+	<packaging>jar</packaging>
 
-    <name>JAVA BACKEND - REST SWAGGER - SERVER</name>
-    <url>http://maven.apache.org</url>
+    <name>COM - TTSTUDIOS - PI - JAVA BACKEND - REST</name>
+	<url>http://www.ttstudios.eu</url>
 
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
-        <start-class>uk.co.cyberbliss.App</start-class>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+        <start-class>com.ttstudios.pi.App</start-class>
 
-        <!-- Required for Spring rest docs -->
-        <snippetsDirectory>${project.build.directory}/generated-ascii-doc</snippetsDirectory>
+        <!-- SPRING -->
+        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
 
-        <!-- Springfox swagger -->
-        <springfox-version>2.4.0</springfox-version>
+		<!-- Required for Spring rest docs -->
+		<snippetsDirectory>${project.build.directory}/generated-ascii-doc</snippetsDirectory>
 
-        <!-- Required for Swagger2Markup & AsciiDoc plugins -->
-        <swagger.input.dir>${project.basedir}/src/docs/swagger</swagger.input.dir>
-        <base.generated.docs.dir>${project.build.directory}/generated-docs</base.generated.docs.dir>
-        <generated.asciidoc.dir>${base.generated.docs.dir}/asciidoc</generated.asciidoc.dir>
-        <asciidoc.input.dir>${project.basedir}/src/docs/asciidoc</asciidoc.input.dir>
-        <asciidoc.html.out.dir>${base.generated.docs.dir}/html</asciidoc.html.out.dir>
-        <asciidoc.pdf.out.dir>${base.generated.docs.dir}/pdf</asciidoc.pdf.out.dir>
-    </properties>
+		<!-- Springfox swagger -->
+		<springfox-version>2.4.0</springfox-version>
 
-    <dependencies>
+		<!-- Required for Swagger2Markup & AsciiDoc plugins -->
+		<swagger.input.dir>${project.basedir}/src/docs/swagger</swagger.input.dir>
+		<base.generated.docs.dir>${project.build.directory}/generated-docs</base.generated.docs.dir>
+		<generated.asciidoc.dir>${base.generated.docs.dir}/asciidoc</generated.asciidoc.dir>
+		<asciidoc.input.dir>${project.basedir}/src/docs/asciidoc</asciidoc.input.dir>
+		<asciidoc.html.out.dir>${base.generated.docs.dir}/html</asciidoc.html.out.dir>
+		<asciidoc.pdf.out.dir>${base.generated.docs.dir}/pdf</asciidoc.pdf.out.dir>
+	</properties>
 
-        <!-- INTERNAL -->
-        <dependency>
-            <groupId>nl.ttstudios</groupId>
-            <artifactId>java-dao</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>nl.ttstudios</groupId>
-            <artifactId>dto</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <!-- COMMON -->
-        <dependency>
-            <groupId>com.ttstudios.common.db</groupId>
-            <artifactId>database-connectivity</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <!--3rd party-->
+	<dependencies>
+        <!-- SPRING -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
         <!-- tag::actuator[] -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <!-- end::actuator[] -->
 
+        <!-- end::actuator[] -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -84,11 +68,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
             <version>2.0.0</version>
         </dependency>
+
         <dependency>
             <groupId>io.github.robwin</groupId>
             <artifactId>assertj-swagger</artifactId>
@@ -120,15 +106,29 @@
             <groupId>antlr</groupId>
             <artifactId>antlr</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.neo4j</groupId>
             <artifactId>neo4j-cypher-compiler-2.1</artifactId>
             <version>2.1.5</version>
         </dependency>
+
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-jdk8</artifactId>
             <version>RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>nl.ttstudios.pi.backend</groupId>
+            <artifactId>backend-dto</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>nl.ttstudios.pi.backend</groupId>
+            <artifactId>backend-dao</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>nl.ttstudios.pi.backend</groupId>
+            <artifactId>backend-transform</artifactId>
         </dependency>
 
     </dependencies>
@@ -269,4 +269,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

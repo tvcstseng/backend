@@ -8,18 +8,19 @@
         <version>1.2.4.RELEASE</version>
     </parent>
 
-    <groupId>nl.ttstudios</groupId>
+    <groupId>nl.ttstudios.pi.backend</groupId>
     <artifactId>backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>BACKEND - BASELINE</name>
+    <name>COM - TTSTUDIOS - PI - JAVA BACKEND - BASELINE</name>
     <url>http://maven.apache.org</url>
 
     <modules>
+        <module>backend-dao</module>
+        <module>backend-dto</module>
+        <module>backend-transform</module>
         <module>java-rest-server</module>
-        <module>java-dao</module>
-        <module>dto</module>
     </modules>
 
     <properties>
@@ -45,6 +46,32 @@
 
     <dependencyManagement>
         <dependencies>
+
+            <!-- Spring -->
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>1.5.3.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>nl.ttstudios.pi.backend</groupId>
+                <artifactId>backend-dao</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>nl.ttstudios.pi.backend</groupId>
+                <artifactId>backend-dto</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>nl.ttstudios.pi.backend</groupId>
+                <artifactId>backend-transform</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.ttstudios.common.db</groupId>
