@@ -23,3 +23,6 @@ The swagger2markup and asciidoc maven plugins are used to publish the API docume
 `mvn clean test site`
 
 This will create the HTML doc in `target/generated-docs/html`
+
+# TODO make it deployable
+https://octopus.com/blog/spring-boot-windows-services
