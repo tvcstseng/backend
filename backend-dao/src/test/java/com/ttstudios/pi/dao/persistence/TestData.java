@@ -13,7 +13,7 @@ public class TestData {
     public static User createUser(){
         User user = new User();
 
-        user.setName("Timothy");
+        user.setFirstName("Timothy");
         user.setLastName("Tseng");
         user.setAge(32);
         user.setDateOfBirth(new Date());

@@ -21,10 +21,12 @@ public class User extends ResourceSupport implements Serializable {
     private static final long serialVersionUID = 6861961813147181734L;
 
     @Id
+    private String id;
+
     private String uId;
 
     @Indexed(direction = IndexDirection.ASCENDING)
-    private String name;
+    private String firstName;
 
     private String lastName;
 
@@ -52,12 +54,12 @@ public class User extends ResourceSupport implements Serializable {
         this.uId = uId;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
