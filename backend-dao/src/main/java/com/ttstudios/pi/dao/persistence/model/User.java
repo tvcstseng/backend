@@ -7,6 +7,8 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.hateoas.ResourceSupport;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -23,20 +25,25 @@ public class User extends ResourceSupport implements Serializable {
     @Id
     private String id;
 
-    private String uId;
+    @NotNull
+    private String uid;
 
+    @NotBlank
     @Indexed(direction = IndexDirection.ASCENDING)
     private String firstName;
 
+    @NotBlank
     private String lastName;
 
     //@DBRef
     //@Field("email")
     //@CascadeSave
+    @NotBlank
     private String email;
 
     private String photoUrl;
 
+    @NotBlank
     private int age;
 
     private Date dateOfBirth;
@@ -45,13 +52,16 @@ public class User extends ResourceSupport implements Serializable {
 
     private int watcherTypeId;
 
-
-    public String getUId() {
-        return uId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setuId(String uId) {
-        this.uId = uId;
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getFirstName() {

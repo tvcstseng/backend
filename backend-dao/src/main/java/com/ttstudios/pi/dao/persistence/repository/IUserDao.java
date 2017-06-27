@@ -13,6 +13,8 @@ public interface IUserDao {
 
     User findOne(Criteria criteria);
 
+    User findOneByUid(String uid);
+
     List<User> findAll();
 
     User create(User entity);

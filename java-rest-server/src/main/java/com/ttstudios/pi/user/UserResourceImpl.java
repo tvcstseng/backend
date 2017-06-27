@@ -2,6 +2,7 @@ package com.ttstudios.pi.user;
 
 import com.ttstudios.pi.dao.persistence.model.User;
 import com.ttstudios.pi.dao.persistence.service.UserService;
+import com.ttstudios.pi.transform.MergeMapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.util.List;
 
+import static com.ttstudios.pi.dao.persistence.service.UserService.UID;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -31,6 +33,9 @@ public class UserResourceImpl implements UserResource {
     @Autowired
     private UserService service;
 
+    @Autowired
+    private MergeMapper mapper;
+
     @Override
     @RequestMapping( value = "/users/{uid}", method = RequestMethod.GET, produces = APPLICATION_JSON_VALUE )
     @ResponseStatus( HttpStatus.OK )
@@ -38,8 +43,7 @@ public class UserResourceImpl implements UserResource {
     @ApiOperation( value = "Get a user using its UID" )
     public ResponseEntity<User> getUserByUId(@PathVariable String uid) {
 
-        Criteria criteria = Criteria.where("uId").is(uid);
-        User result = service.findOne( criteria );
+        User result = service.findOne( Criteria.where(UID).is(uid) );
         HttpStatus httpStatus;
         if ( result != null ) {
             result.removeLinks();
@@ -58,10 +62,25 @@ public class UserResourceImpl implements UserResource {
     @RequestMapping( value = "/user", method = RequestMethod.POST, produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE )
     @ApiOperation( value = "Add a user" )
     public ResponseEntity<User> addUser(@Valid @RequestBody User user) {
-        service.saveOrUpdate( user );
-        user.add( linkTo( methodOn( UserResourceImpl.class ).getUserByUId( user.getUId() ) ).withSelfRel() );
+//        User dbUser = service.findOne(user.getUid());
+//        if (dbUser != null){
+//            dbUser = mapper.merge(user);
+//            user = service.saveOrUpdate( dbUser );
+//            return new ResponseEntity<>( user, HttpStatus.OK );
+//        }
+//        else if(user != null) {
+//            user = service.saveOrUpdate( user );
+//            user.add(linkTo(methodOn(UserResourceImpl.class).getUserByUId(user.getUid())).withSelfRel());
+//            user.add(linkTo(methodOn(UserResourceImpl.class).getAllUsers()).withRel("Users"));
+//            return new ResponseEntity<>( user, HttpStatus.CREATED );
+//        }
+
+        user = service.saveOrUpdate( user );
+
+        user.add( linkTo( methodOn( UserResourceImpl.class ).getUserByUId( user.getUid() ) ).withSelfRel() );
         user.add( linkTo( methodOn( UserResourceImpl.class ).getAllUsers() ).withRel( "Users" ) );
 
+        user = service.saveOrUpdate( user );
         return new ResponseEntity<>( user, HttpStatus.CREATED );
     }
 
@@ -73,7 +92,7 @@ public class UserResourceImpl implements UserResource {
         List<User> users = service.findAll();
         users.forEach( user -> {
             user.removeLinks();
-            user.add( linkTo( methodOn( UserResourceImpl.class ).getUserByUId( user.getUId() ) ).withSelfRel() );
+            user.add( linkTo( methodOn( UserResourceImpl.class ).getUserByUId( user.getUid() ) ).withSelfRel() );
         } );
         return new ResponseEntity<>( users, HttpStatus.OK );
     }
@@ -84,7 +103,7 @@ public class UserResourceImpl implements UserResource {
     public ResponseEntity<User> updateUser(@PathVariable String sensorUid, @RequestBody User user) {
         HttpStatus httpStatus;
         if ( service.findOne( sensorUid ) != null ) {
-            user.setuId( sensorUid );
+            user.setUid( sensorUid );
             service.saveOrUpdate( user );
             httpStatus = HttpStatus.OK;
             user.add( linkTo( methodOn( UserResourceImpl.class ).getUserByUId( sensorUid ) ).withSelfRel() );
