@@ -1,5 +1,6 @@
 package com.ttstudios.pi.user;
 
+import com.ttstudios.granny_watcher.backend.dto.UserDto;
 import com.ttstudios.pi.dao.persistence.model.User;
 import org.springframework.http.ResponseEntity;
 
@@ -34,7 +35,7 @@ public interface UserResource {
         @ApiError 404 Temperature not found
      *
      */
-    ResponseEntity<User> getUserByUId(String uid);
+    ResponseEntity<UserDto> getUserByUId(String uid);
 
     /**
      * @api {post} /api/temperature Add a temperature
@@ -62,7 +63,7 @@ public interface UserResource {
         @apiSuccessExample {json} Success-Response:
       *     HTTP/1.1 201 CREATED
      */
-    ResponseEntity<User> addUser(User user);
+    ResponseEntity<UserDto> addUser(UserDto user);
 
     /**
      * @api {get} /api/books Get a list of all books
@@ -100,7 +101,7 @@ public interface UserResource {
     }
             ]
      */
-    ResponseEntity<List<User>> getAllUsers();
+    ResponseEntity<List<UserDto>> getAllUsers();
 
     /**
      * @api {put} /api/temperature/:sensor_uid Update a temperature
@@ -130,7 +131,7 @@ public interface UserResource {
     }
     }
      */
-    ResponseEntity<User> updateUser(String uid, User user);
+    ResponseEntity<UserDto> updateUser(String uid, UserDto user);
 
     /**
      * @api {delete} /api/temperature/:sensor_uid Delete a temperature

@@ -30,7 +30,8 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @Api(value = "Temperature", description = "Operations about Temperature readings")
 public class TemperatureResourceImpl implements TemperatureResource {
 
-    public static final DtoToEntityMapper INSTANCE = Mappers.getMapper(DtoToEntityMapper.class);
+    @Autowired
+    private DtoToEntityMapper INSTANCE;
 
     @Autowired
     private MeasurementService service;

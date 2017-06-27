@@ -1,7 +1,10 @@
 package com.ttstudios.pi.transform;
 
 import com.ttstudios.granny_watcher.backend.dto.TemperatureDto;
+import com.ttstudios.granny_watcher.backend.dto.UserDto;
 import com.ttstudios.pi.dao.persistence.model.Measurement;
+import com.ttstudios.pi.dao.persistence.model.User;
+import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Qualifier;
@@ -40,4 +43,11 @@ public abstract class DtoToEntityMapper {
     @Target( ElementType.METHOD)
     @Retention(RetentionPolicy.CLASS)
     public @interface TimestampLong{}
+
+    @Mapping(target = "id" , ignore = true)
+    @Mapping(target = "links", ignore = true)
+    public abstract UserDto toDto(User user);
+
+    @InheritInverseConfiguration
+    public abstract User toEntity(UserDto userDto);
 }

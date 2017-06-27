@@ -1,13 +1,9 @@
-package com.ttstudios.pi.dao.persistence.model;
+package com.ttstudios.granny_watcher.backend.dto;
 
-import com.querydsl.core.annotations.QueryEntity;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.IndexDirection;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.hateoas.ResourceSupport;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
@@ -16,13 +12,10 @@ import java.util.Date;
  * Created by Timothy Tseng on 10-6-2017.
  */
 
-@QueryEntity
-@Document
-public class User implements Serializable {
+public class UserDto extends ResourceSupport implements Serializable {
 
     private static final long serialVersionUID = 6861961813147181734L;
 
-    @Id
     private String id;
 
     @NotNull
@@ -43,7 +36,6 @@ public class User implements Serializable {
 
     private String photoUrl;
 
-    @NotBlank
     private int age;
 
     private Date dateOfBirth;
@@ -52,9 +44,10 @@ public class User implements Serializable {
 
     private int watcherTypeId;
 
-    public User(){}
+    public UserDto() {
+    }
 
-    public User(String id, String uid, String firstName, String lastName, String email, String photoUrl){
+    public UserDto(String id, String uid, String firstName, String lastName, String email, String photoUrl) {
         this.id = id;
         this.uid = uid;
         this.firstName = firstName;

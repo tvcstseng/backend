@@ -24,8 +24,4 @@ public class UserDao extends AbstractMongoDAO<User> implements IUserDao {
         return dbEntity;
     }
 
-    @Override
-    public User findOneByUid(String uid) {
-        return findOne(Criteria.where(UID).is(uid));
-    }
 }

@@ -21,13 +21,13 @@
         <start-class>com.ttstudios.pi.App</start-class>
 
         <!-- SPRING -->
-        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
+        <org.springframework.version>4.3.9.RELEASE</org.springframework.version>
 
 		<!-- Required for Spring rest docs -->
 		<snippetsDirectory>${project.build.directory}/generated-ascii-doc</snippetsDirectory>
 
 		<!-- Springfox swagger -->
-		<springfox-version>2.4.0</springfox-version>
+		<springfox-version>2.7.0</springfox-version>
 
 		<!-- Required for Swagger2Markup & AsciiDoc plugins -->
 		<swagger.input.dir>${project.basedir}/src/docs/swagger</swagger.input.dir>
@@ -39,6 +39,7 @@
 	</properties>
 
 	<dependencies>
+
         <!-- SPRING -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -82,6 +83,7 @@
         </dependency>
 
         <!-- Swagger tooling dependencies -->
+
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -91,6 +93,12 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-spring-web</artifactId>
             <version>${springfox-version}</version>
         </dependency>
 
@@ -130,6 +138,11 @@
             <groupId>nl.ttstudios.pi.backend</groupId>
             <artifactId>backend-transform</artifactId>
         </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
+
 
     </dependencies>
 
