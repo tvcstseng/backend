@@ -65,6 +65,9 @@ public interface UserResource {
      */
     ResponseEntity<UserDto> addUser(UserDto user);
 
+
+    ResponseEntity<UserDto> addFollowee(String uid, String user);
+
     /**
      * @api {get} /api/books Get a list of all books
      * @apiName getAllBooks

@@ -1,5 +1,6 @@
 package com.ttstudios.pi.transform;
 
+import com.ttstudios.granny_watcher.backend.dto.MeasurementDto;
 import com.ttstudios.granny_watcher.backend.dto.TemperatureDto;
 import com.ttstudios.granny_watcher.backend.dto.UserDto;
 import com.ttstudios.pi.dao.persistence.model.Measurement;
@@ -11,6 +12,7 @@ import org.mapstruct.Qualifier;
 import org.mapstruct.ReportingPolicy;
 import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.Min;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -25,14 +27,15 @@ import java.util.List;
 @Mapper( unmappedTargetPolicy = ReportingPolicy.ERROR, componentModel = "spring" )
 public abstract class DtoToEntityMapper {
 
-    public abstract java.util.List<Measurement> toEntity(List<TemperatureDto> source);
+    public abstract java.util.List<com.ttstudios.pi.dao.persistence.model.Measurement> toEntity(List<TemperatureDto> source);
 
     //_id, measurement, measurementUnit
-    @Mapping( target = "_id", ignore = true)
+    @Mapping( target = "id", ignore = true)
     @Mapping( target = "measurement", source = "temperature")
     @Mapping( target = "measurementUnit", source = "temperatureUnit")
     @Mapping( target = "unixTimestamp", source = "unixTimestamp", qualifiedBy = TimestampLong.class)
-    public abstract Measurement toEntity(TemperatureDto source);
+    @Mapping( target = "sensorUid", source = "sensorUID")
+    public abstract com.ttstudios.pi.dao.persistence.model.Measurement toEntity(TemperatureDto source);
 
     @TimestampLong
     protected Date timestampToDate(String date){
@@ -50,4 +53,11 @@ public abstract class DtoToEntityMapper {
 
     @InheritInverseConfiguration
     public abstract User toEntity(UserDto userDto);
+
+    @Mapping(target = "id" , ignore = true)
+    @Mapping(target = "links", ignore = true)
+    public abstract MeasurementDto toDto(Measurement entity);
+
+    @InheritInverseConfiguration
+    public abstract Measurement toEntity(MeasurementDto dto);
 }

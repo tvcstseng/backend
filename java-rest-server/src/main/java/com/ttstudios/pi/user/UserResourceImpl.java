@@ -78,6 +78,28 @@ public class UserResourceImpl implements UserResource {
         return new ResponseEntity<>( userDto, HttpStatus.CREATED );
     }
 
+    @Override
+    @RequestMapping( value = "/followee/{uid}/{followeeId}", method = RequestMethod.GET, produces = APPLICATION_JSON_VALUE )
+    @ResponseStatus( HttpStatus.OK )
+    @ResponseBody
+    @ApiOperation( value = "Add a followee to ur account" )
+    public ResponseEntity<UserDto> addFollowee(@PathVariable String uid, @RequestBody String followeeId) {
+
+        UserDto userDto = toDtoMapper.toDto(service.findOne(Criteria.where("uid").is(uid)));
+
+        if(userDto.getFolloweeIds() == null){
+            userDto.setFolloweeIds(new ArrayList<>());
+        }
+        userDto.getFolloweeIds().add(followeeId);
+
+        userDto.add( linkTo( methodOn( UserResourceImpl.class ).getUserByUId( uid ) ).withSelfRel() );
+        userDto.add( linkTo( methodOn( UserResourceImpl.class ).getAllUsers() ).withRel( "Users" ) );
+
+        service.saveOrUpdate(toDtoMapper.toEntity(userDto));
+
+        return new ResponseEntity<>( userDto, HttpStatus.CREATED );
+    }
+
     @RequestMapping( value = "/users", method = RequestMethod.GET, produces = APPLICATION_JSON_VALUE )
     @ResponseBody
     @Override

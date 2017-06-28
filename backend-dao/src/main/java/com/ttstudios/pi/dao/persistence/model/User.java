@@ -11,6 +11,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Timothy Tseng on 10-6-2017.
@@ -52,16 +53,9 @@ public class User implements Serializable {
 
     private int watcherTypeId;
 
-    public User(){}
+    private List<String> followeeIds;
 
-    public User(String id, String uid, String firstName, String lastName, String email, String photoUrl){
-        this.id = id;
-        this.uid = uid;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.photoUrl = photoUrl;
-    }
+    public User(){}
 
     public void setId(String id) {
         this.id = id;
@@ -139,4 +133,11 @@ public class User implements Serializable {
         this.watcherTypeId = watcherTypeId;
     }
 
+    public List<String> getFolloweeIds() {
+        return followeeIds;
+    }
+
+    public void setFolloweeIds(List<String> followeeIds) {
+        this.followeeIds = followeeIds;
+    }
 }

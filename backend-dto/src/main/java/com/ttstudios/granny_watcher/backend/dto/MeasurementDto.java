@@ -1,8 +1,6 @@
-package com.ttstudios.pi.dao.persistence.model;
+package com.ttstudios.granny_watcher.backend.dto;
 
-import com.querydsl.core.annotations.QueryEntity;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.hateoas.ResourceSupport;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -10,16 +8,9 @@ import java.util.Date;
 /**
  * Created by ttseng on 5/6/17.
  */
-@QueryEntity
-@Document
-public class Measurement implements Serializable {
+public class MeasurementDto extends ResourceSupport implements Serializable {
 
     private static final long serialVersionUID = -4747375990087269943L;
-
-    @Id
-    private String id;
-
-    private String sensorUid;
 
     private double measurement;
 
@@ -27,21 +18,7 @@ public class Measurement implements Serializable {
 
     private Date unixTimestamp;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getSensorUid() {
-        return sensorUid;
-    }
-
-    public void setSensorUid(String sensorUid) {
-        this.sensorUid = sensorUid;
-    }
+    private String sensorUid;
 
     public double getMeasurement() {
         return measurement;
@@ -67,4 +44,11 @@ public class Measurement implements Serializable {
         this.unixTimestamp = unixTimestamp;
     }
 
+    public String getSensorUid() {
+        return sensorUid;
+    }
+
+    public void setSensorUid(String sensorUid) {
+        this.sensorUid = sensorUid;
+    }
 }

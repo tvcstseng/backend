@@ -28,7 +28,7 @@ public class TestData {
 
         measurement.setMeasurement(1.2d);
         measurement.setMeasurementUnit("c");
-        measurement.setuID("7777777");
+        measurement.setSensorUid("7777777");
         measurement.setUnixTimestamp(new Date());
 
         return measurement;
