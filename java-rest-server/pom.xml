@@ -18,7 +18,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-        <start-class>com.ttstudios.pi.App</start-class>
+        <start-class>com.ttstudios.pi.BackendApplicaton</start-class>
 
         <!-- SPRING -->
         <org.springframework.version>4.3.9.RELEASE</org.springframework.version>
@@ -241,7 +241,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Plugin to generate a Docker image for running this app -->
+            <!-- Plugin to generate a Docker image for running tapp app -->
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
