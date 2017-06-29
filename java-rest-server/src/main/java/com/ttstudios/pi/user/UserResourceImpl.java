@@ -149,5 +149,4 @@ public class UserResourceImpl implements UserResource {
 
         return new ResponseEntity<>( httpStatus );
     }
-
 }
