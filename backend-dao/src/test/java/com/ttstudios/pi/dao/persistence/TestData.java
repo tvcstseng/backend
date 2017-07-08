@@ -19,7 +19,7 @@ public class TestData {
         user.setDateOfBirth(new Date());
         user.setEmail("tvcstseng@gmail.com");
         user.setLocation("Amsterdam");
-        user.setWatcherTypeId(0);
+        user.setWatcherType(0);
         return user;
     }
 
@@ -29,7 +29,7 @@ public class TestData {
         measurement.setMeasurement(1.2d);
         measurement.setMeasurementUnit("c");
         measurement.setSensorUid("7777777");
-        measurement.setUnixTimestamp(new Date());
+        measurement.setUnixTimestamp("324234325");
 
         return measurement;
     }

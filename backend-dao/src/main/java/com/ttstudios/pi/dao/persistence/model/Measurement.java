@@ -25,7 +25,7 @@ public class Measurement implements Serializable {
 
     private String measurementUnit;
 
-    private Date unixTimestamp;
+    private String unixTimestamp;
 
     public String getId() {
         return id;
@@ -59,12 +59,11 @@ public class Measurement implements Serializable {
         this.measurementUnit = measurementUnit;
     }
 
-    public Date getUnixTimestamp() {
+    public String getUnixTimestamp() {
         return unixTimestamp;
     }
 
-    public void setUnixTimestamp(Date unixTimestamp) {
+    public void setUnixTimestamp(String unixTimestamp) {
         this.unixTimestamp = unixTimestamp;
     }
-
 }

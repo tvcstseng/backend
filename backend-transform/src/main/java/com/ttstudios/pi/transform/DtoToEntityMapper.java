@@ -12,7 +12,6 @@ import org.mapstruct.Qualifier;
 import org.mapstruct.ReportingPolicy;
 import org.springframework.stereotype.Component;
 
-import javax.validation.constraints.Min;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

@@ -2,10 +2,7 @@ package com.ttstudios.pi.dao.persistence.model;
 
 import com.querydsl.core.annotations.QueryEntity;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.IndexDirection;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.hateoas.ResourceSupport;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -44,6 +41,8 @@ public class User implements Serializable {
 
     private String photoUrl;
 
+    private String password;
+
     @NotBlank
     private int age;
 
@@ -51,7 +50,7 @@ public class User implements Serializable {
 
     private String location;
 
-    private int watcherTypeId;
+    private int watcherType;
 
     private List<String> followeeIds;
 
@@ -125,12 +124,20 @@ public class User implements Serializable {
         this.location = location;
     }
 
-    public int getWatcherTypeId() {
-        return watcherTypeId;
+    public int getWatcherType() {
+        return watcherType;
     }
 
-    public void setWatcherTypeId(int watcherTypeId) {
-        this.watcherTypeId = watcherTypeId;
+    public void setWatcherType(int watcherType) {
+        this.watcherType = watcherType;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public List<String> getFolloweeIds() {

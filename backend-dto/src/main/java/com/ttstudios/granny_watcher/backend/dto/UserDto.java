@@ -3,7 +3,6 @@ package com.ttstudios.granny_watcher.backend.dto;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.hateoas.ResourceSupport;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
@@ -12,7 +11,6 @@ import java.util.List;
 /**
  * Created by Timothy Tseng on 10-6-2017.
  */
-
 public class UserDto extends ResourceSupport implements Serializable {
 
     private static final long serialVersionUID = 6861961813147181734L;
@@ -29,6 +27,8 @@ public class UserDto extends ResourceSupport implements Serializable {
     @NotBlank
     private String lastName;
 
+    private String password;
+
     //@DBRef
     //@Field("email")
     //@CascadeSave
@@ -43,11 +43,19 @@ public class UserDto extends ResourceSupport implements Serializable {
 
     private String location;
 
-    private int watcherTypeId;
+    private int watcherType;
 
     private List<String> followeeIds;
 
     public UserDto() {
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setId(String id) {
@@ -118,12 +126,12 @@ public class UserDto extends ResourceSupport implements Serializable {
         this.location = location;
     }
 
-    public int getWatcherTypeId() {
-        return watcherTypeId;
+    public int getWatcherType() {
+        return watcherType;
     }
 
-    public void setWatcherTypeId(int watcherTypeId) {
-        this.watcherTypeId = watcherTypeId;
+    public void setWatcherType(int watcherType) {
+        this.watcherType = watcherType;
     }
 
     public List<String> getFolloweeIds() {

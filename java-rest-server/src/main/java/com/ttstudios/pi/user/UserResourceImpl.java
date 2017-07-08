@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.apache.commons.codec.binary.Base64;
+
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +50,10 @@ public class UserResourceImpl implements UserResource {
     @ResponseBody
     @ApiOperation( value = "Get a user using its UID" )
     public ResponseEntity<UserDto> getUserByUId(@PathVariable String uid) {
+
+        Base64 decoder = new Base64();
+        byte[] decodedBytes = decoder.decode(uid);
+        uid = new String(decodedBytes);
 
         User user = service.findOne( Criteria.where(UID).is(uid) );
         UserDto userDto = toDtoMapper.toDto(user);
@@ -80,10 +86,16 @@ public class UserResourceImpl implements UserResource {
 
     @Override
     @RequestMapping( value = "/followee/{uid}/{followeeId}", method = RequestMethod.GET, produces = APPLICATION_JSON_VALUE )
-    @ResponseStatus( HttpStatus.OK )
     @ResponseBody
     @ApiOperation( value = "Add a followee to ur account" )
-    public ResponseEntity<UserDto> addFollowee(@PathVariable String uid, @RequestBody String followeeId) {
+    public ResponseEntity<UserDto> addFollowee(@PathVariable String uid, @PathVariable String followeeId) {
+
+        Base64 decoder = new Base64();
+        byte[] uidBytes = decoder.decode(uid);
+        uid = new String(uidBytes);
+
+        byte[] followeeIdBytes = decoder.decode(followeeId);
+        followeeId = new String(followeeIdBytes);
 
         UserDto userDto = toDtoMapper.toDto(service.findOne(Criteria.where("uid").is(uid)));
 
@@ -97,7 +109,7 @@ public class UserResourceImpl implements UserResource {
 
         service.saveOrUpdate(toDtoMapper.toEntity(userDto));
 
-        return new ResponseEntity<>( userDto, HttpStatus.CREATED );
+        return new ResponseEntity<>( userDto, HttpStatus.OK );
     }
 
     @RequestMapping( value = "/users", method = RequestMethod.GET, produces = APPLICATION_JSON_VALUE )
