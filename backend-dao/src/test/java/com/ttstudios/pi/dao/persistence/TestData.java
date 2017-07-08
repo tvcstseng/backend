@@ -13,13 +13,13 @@ public class TestData {
     public static User createUser(){
         User user = new User();
 
-        user.setName("Timothy");
+        user.setFirstName("Timothy");
         user.setLastName("Tseng");
         user.setAge(32);
         user.setDateOfBirth(new Date());
         user.setEmail("tvcstseng@gmail.com");
         user.setLocation("Amsterdam");
-        user.setWatcherTypeId(0);
+        user.setWatcherType(0);
         return user;
     }
 
@@ -28,8 +28,8 @@ public class TestData {
 
         measurement.setMeasurement(1.2d);
         measurement.setMeasurementUnit("c");
-        measurement.setuID("7777777");
-        measurement.setUnixTimestamp(new Date());
+        measurement.setSensorUid("7777777");
+        measurement.setUnixTimestamp("324234325");
 
         return measurement;
     }

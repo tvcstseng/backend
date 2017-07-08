@@ -1,7 +1,6 @@
 package com.ttstudios.pi.temperature.controller;
 
-import com.ttstudios.granny_watcher.backend.dto.TemperatureDto;
-import com.ttstudios.pi.dao.persistence.model.Measurement;
+import com.ttstudios.granny_watcher.backend.dto.MeasurementDto;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -35,7 +34,7 @@ public interface TemperatureResource {
         @ApiError 404 Temperature not found
      *
      */
-    ResponseEntity<Measurement> getTemperatureBySensorUid(String uid);
+    ResponseEntity<MeasurementDto> getTemperatureBySensorUid(String uid);
 
     /**
      * @api {post} /api/temperature Add a temperature
@@ -63,7 +62,7 @@ public interface TemperatureResource {
         @apiSuccessExample {json} Success-Response:
       *     HTTP/1.1 201 CREATED
      */
-    ResponseEntity<Measurement> addTemperatureReading(Measurement temperature);
+    ResponseEntity<MeasurementDto> addTemperatureReading(MeasurementDto temperature);
 
     /**
      * @api {get} /api/books Get a list of all books
@@ -101,7 +100,7 @@ public interface TemperatureResource {
     }
             ]
      */
-    ResponseEntity<List<Measurement>> getAllTemperatureReadings();
+    ResponseEntity<List<MeasurementDto>> getAllTemperatureReadings();
 
     /**
      * @api {put} /api/temperature/:sensor_uid Update a temperature
@@ -131,7 +130,7 @@ public interface TemperatureResource {
     }
     }
      */
-    ResponseEntity<Measurement> updateTemperatureReading(String sensorUid, Measurement temperatureReading);
+    ResponseEntity<MeasurementDto> updateTemperatureReading(String sensorUid, MeasurementDto temperatureReading);
 
     /**
      * @api {delete} /api/temperature/:sensor_uid Delete a temperature

@@ -1,10 +1,8 @@
-package com.ttstudios.pi.dao.persistence.model;
+package com.ttstudios.granny_watcher.backend.dto;
 
-import com.querydsl.core.annotations.QueryEntity;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.hateoas.ResourceSupport;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
@@ -13,14 +11,10 @@ import java.util.List;
 /**
  * Created by Timothy Tseng on 10-6-2017.
  */
-
-@QueryEntity
-@Document
-public class User implements Serializable {
+public class UserDto extends ResourceSupport implements Serializable {
 
     private static final long serialVersionUID = 6861961813147181734L;
 
-    @Id
     private String id;
 
     @NotNull
@@ -33,6 +27,8 @@ public class User implements Serializable {
     @NotBlank
     private String lastName;
 
+    private String password;
+
     //@DBRef
     //@Field("email")
     //@CascadeSave
@@ -41,9 +37,6 @@ public class User implements Serializable {
 
     private String photoUrl;
 
-    private String password;
-
-    @NotBlank
     private int age;
 
     private Date dateOfBirth;
@@ -54,7 +47,16 @@ public class User implements Serializable {
 
     private List<String> followeeIds;
 
-    public User(){}
+    public UserDto() {
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public void setId(String id) {
         this.id = id;
@@ -130,14 +132,6 @@ public class User implements Serializable {
 
     public void setWatcherType(int watcherType) {
         this.watcherType = watcherType;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public List<String> getFolloweeIds() {

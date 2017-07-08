@@ -17,6 +17,8 @@ import java.util.List;
 @Transactional
 public class UserService {
 
+    public static final String UID = "uid";
+
     @Autowired
     IUserDao dao;
 
@@ -24,8 +26,8 @@ public class UserService {
         super();
     }
 
-    public void saveOrUpdate(final User entity) {
-        dao.saveOrUpdate(entity);
+    public User saveOrUpdate(final User entity) {
+        return dao.saveOrUpdate(entity);
     }
 
     public User findOne(Criteria criteria) {
@@ -33,7 +35,7 @@ public class UserService {
     }
 
     public User findOne(String uid) {
-        Criteria criteria = Criteria.where("uId").is(uid);
+        Criteria criteria = Criteria.where(UID).is(uid);
         return dao.findOne(criteria);
     }
 
@@ -47,7 +49,7 @@ public class UserService {
     }
 
     public boolean deleteByUID(String uid){
-        Criteria criteria = Criteria.where("uId").is(uid);
+        Criteria criteria = Criteria.where(UID).is(uid);
         WriteResult result = dao.deleteByCriteria(criteria);
         return true;
     }

@@ -17,7 +17,6 @@ public interface IUserDao {
 
     User create(User entity);
 
-
     User saveOrUpdate(User entity);
 
     WriteResult delete(User entity);

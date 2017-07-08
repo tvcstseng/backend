@@ -27,7 +27,7 @@
 //import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 //
 //@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(classes = App.class, loader = SpringApplicationContextLoader.class)
+//@ContextConfiguration(classes = BackendApplicaton.class, loader = SpringApplicationContextLoader.class)
 //@WebAppConfiguration
 //public class BooksResourceITTest {
 //

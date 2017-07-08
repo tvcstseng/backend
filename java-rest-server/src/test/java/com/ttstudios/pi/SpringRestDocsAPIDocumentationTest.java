@@ -39,7 +39,7 @@
 //import com.fasterxml.jackson.databind.ObjectMapper;
 //
 //@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(classes = App.class, loader = SpringApplicationContextLoader.class)
+//@ContextConfiguration(classes = BackendApplicaton.class, loader = SpringApplicationContextLoader.class)
 //@WebAppConfiguration
 //public class SpringRestDocsAPIDocumentationTest {
 //
